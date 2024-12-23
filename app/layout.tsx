@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import clsx from "clsx";
 import { Onest } from "next/font/google";
+import { ThemeProvider } from "@/components/Theme/ThemeProvider";
 
 const onest = Onest({
   subsets: ["latin"],
@@ -20,13 +21,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={
           (clsx("antialiased w-full bg-primary text-primary"), onest.className)
         }
       >
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

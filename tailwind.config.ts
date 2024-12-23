@@ -22,12 +22,14 @@ export default {
         primary: "var(--gray-12)",
         secondary: "var(--gray-11)",
         tertiary: "var(--gray-9)",
+        blueA: "var(--blue-1)",
         link: "var(--blue-11)",
       },
       backgroundColor: {
         primary: "var(--gray-1)",
         secondary: "var(--gray-2)",
         tertiary: "var(--gray-3)",
+        blueA: "var(--blue-9)",
       },
       borderColor: {
         primary: "var(--gray-6)",

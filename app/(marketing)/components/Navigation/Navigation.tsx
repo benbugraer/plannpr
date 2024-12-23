@@ -1,12 +1,18 @@
 "use client";
 import Link from "next/link";
 import { CSSProperties } from "react";
+import ThemeSwitcher from "@/components/Theme/ThemeSwitcher";
+import { MobileNavigation } from "./MobileNavigation";
+import NavigationLinks from "./NavigationLİnks";
+import { Button } from "@/components/ui/button";
+import { MoveRight } from "lucide-react";
 
-// const navItems = [
-//   { label: "Home", href: "/" },
-//   { label: "Components", href: "/docs/introduction" },
-//   { label: "Blocks", href: "/blocks" },
-// ];
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Features", href: "/features" },
+  { label: "Pricing", href: "/pricing" },
+];
 
 // const social = [
 //   {
@@ -22,46 +28,66 @@ import { CSSProperties } from "react";
 export default function Navigation() {
   return (
     <header
-      className="sticky top-0 h-[var(--header-height)] z-50 p-2 bg-primary backdrop-blur border-b border-primary"
+      className="sticky top-0 h-[var(--header-height)] z-50 p-2 bg-primary backdrop-blur border-b border-primary animate-in-reverse"
       style={{ "--index": 0 } as CSSProperties}
     >
-      <hr className="m-0 h-px w-full border-none bg-gradient-to-r from-neutral-200/0 via-neutral-200/30 to-neutral-200/0 shadow-2xl"></hr>
-
-      <div className="container flex h-12 items-center">
+      <div className="container flex h-16 items-center">
         <Link
           href="/"
           className="relative text-lg font-normal tracking-tighter flex items-center space-x-0"
         >
           <span className="text-primary text-xl">
-            <span className="font-thin">Plann</span>
-            <span className="font-bold">PR</span>
+            <span className="font-thin">P</span>
+            <span className="font-extralight">l</span>
+            <span className="font-light">a</span>
+            <span className="font-normal">n</span>
+            <span className="font-medium">n</span>
+            <span className="font-semibold">P</span>
+            <span className="font-bold">R</span>
           </span>
         </Link>
-        <nav>
-          <ul className="hidden md:flex gap-1 items-center justify-center text-center">
-            {/* {navItems.map((items) => (
+        <nav className="ml-auto">
+          <ul className="hidden md:flex gap-1">
+            {navItems.map((items) => (
               <li key={items.href}>
-                <NavLinks href={items.href}>{items.label}</NavLinks>
+                <NavigationLinks href={items.href}>
+                  {items.label}
+                </NavigationLinks>
               </li>
-            ))} */}
+            ))}
           </ul>
         </nav>
-        <nav className="flex  items-center justify-end ml-auto">
-          {/* {social.map((social) => (
-            <a
-              target="_blank"
-              key={social.url}
-              href={social.url}
-              className="inline-flex text-tertiary items-center justify-center  text-sm font-medium transition-colors  rounded-full focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-tertiary duration-500 hover:duration-500 hover:text-accent-foreground h-9 py-2 w-9"
-            >
-              {social.icon}
-            </a>
-          ))} */}
-          <div className="ml-2">{/* <ThemeSwitcher /> */}</div>
+        <nav className="hidden md:flex items-center justify-end ml-auto gap-4">
+          <Link href="/docs/introduction">
+            <Button className="bg-tertiary group rounded-full flex max-w-2xl items-center justify-center sm:flex-row sm:space-x-4 sm:space-y-0  dark:hover:bg-tertiary dark:hover:text-primary duration-500 ease-linear transition-all hover:transition-colors hover:duration-300">
+              Giriş Yap
+              <MoveRight
+                className="-me-1 ms-2  transition-transform group-hover:translate-x-0.5"
+                size={16}
+                strokeWidth={2}
+                aria-hidden="true"
+              />
+            </Button>
+          </Link>
+          <Link href="/docs/introduction">
+            <Button className="group rounded-full flex max-w-2xl items-center justify-center sm:flex-row sm:space-x-4 sm:space-y-0 bg-blueA text-white hover:bg-tertiary hover:text-primary dark:hover:bg-tertiary dark:hover:text-primary duration-500 ease-linear transition-all hover:transition-colors hover:duration-300">
+              Hemen Başlayın
+              <MoveRight
+                className="-me-1 ms-2  transition-transform group-hover:translate-x-0.5"
+                size={16}
+                strokeWidth={2}
+                aria-hidden="true"
+              />
+            </Button>
+          </Link>
+          <div className="ml-2">
+            <ThemeSwitcher />
+          </div>
         </nav>
-        <div className="lg:hidden flex ml-2">{/* <MobileNavigation /> */}</div>
+        <div className="lg:hidden flex ml-2">
+          <MobileNavigation />
+        </div>
       </div>
-      <hr className="m-0 h-px w-full border-none bg-gradient-to-r from-neutral-200/0 via-neutral-200/30 to-neutral-200/0 shadow-2xl"></hr>
     </header>
   );
 }
